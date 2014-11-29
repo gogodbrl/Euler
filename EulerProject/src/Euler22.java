@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-class Oilder5 {
+class Euler22 {
 	public static void main(String [] args){
 		P22 p = new P22();
 		p.print();
