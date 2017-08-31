@@ -1,0 +1,71 @@
+'''
+Created on 2017. 8. 31.
+
+@author: k170710
+'''
+
+MAX_NUM = 1000000
+
+class Problem37(object):
+    def __init__(self):
+        pass
+    
+    def is_prime_number(self, number):
+        #input : 20 ( 1 to number ) 
+        
+        increase_num = 2
+        
+        while (increase_num < number) :
+            if number % increase_num == 0 :
+                break
+            else :
+                increase_num +=1
+                
+        if increase_num == number :
+            return True
+        return False
+    
+    def is_symmetry_prime_number(self, number):
+        # input : 17 ( only prime number )
+        
+        number_str = str(number)
+        split_list = [] 
+        #remove left
+        for i in range(len(number_str),0 ,-1) :
+            split_list.append(number_str[:i])
+        
+        #remove right
+        for i in range(0, len(number_str)) :
+            split_list.append(number_str[i:])
+            
+        split_list.append(None)
+        
+        # check prime_number
+        
+        for elem in split_list :
+            if elem == None :
+                return True
+            if not self.is_prime_number(int(elem)) :
+                break
+                
+        return False
+    
+    def run(self):
+        sum = 0
+        count = 0 
+        i = 0 
+        while count != 11 :
+            if self.is_prime_number(i):
+                if self.is_symmetry_prime_number(i) :
+                    if i > 7 :
+                        count +=1
+                        sum += i
+                        
+            i= i+1
+        print "sum:", sum
+    
+def main():
+    Problem37().run()
+
+if __name__ == '__main__':
+    main()
